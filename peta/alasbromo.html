@@ -1,0 +1,227 @@
+<html>
+<head>
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Ruang Peta Digital">
+    <meta name="author" content="Panji Danutirto">
+    <link rel="icon" sizes="196x196" href="assets/img/logo.png">
+    <link rel="icon" type="image" href="assets/img/logo.png">
+    
+  <title>Survey Alas Bromo</title>
+
+  <!-- Load Leaflet from CDN -->
+  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+  integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+  crossorigin=""></script>
+  <!-- Load Esri Leaflet from CDN -->
+  <script src="https://unpkg.com/esri-leaflet@2.3.3/dist/esri-leaflet.js"
+  integrity="sha512-cMQ5e58BDuu1pr9BQ/eGRn6HaR6Olh0ofcHFWe5XesdCITVuSBiBZZbhCijBe5ya238f/zMMRYIMIIg1jxv4sQ=="
+  crossorigin=""></script>
+  <link rel="stylesheet" href="assets/css/esri-leaflet-geocoder.css">
+  <link rel="stylesheet" href="assets/css/L.Control.BetterScale.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/L.Control.ZoomBar.css"/>
+  <link rel="stylesheet" href="assets/css/leaflet.groupedlayercontrol.css"/>
+  <link rel="stylesheet" href="assets/css/leaflet.css"/>
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/L.Control.SlideMenu.css">
+  <link rel="stylesheet" href="assets/css/leaflet-compass.css">
+  <link rel="stylesheet" href="assets/css/Control.MiniMap.min.css">
+  <link rel="stylesheet" href="assets/css/MarkerCluster.css" />
+  <link rel="stylesheet" href="assets/css/MarkerCluster.Default.css" />
+  <link rel="stylesheet" href="assets/css/L.Control.Locate.min.css">
+  <link rel="stylesheet" href="assets/css/L.Control.MousePosition.css">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet'/>
+  
+  <style>
+    body { margin:0; padding:0; }
+    #map { position: absolute; top:0; bottom:0; right:0; left:0; }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand" href="alasbromo.html">
+          <img src="assets/img/pine.png" width="30" height="30" class="d-inline-block align-top" alt="">
+          Survey Alas Bromo
+        </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="../index.html">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Link Penting</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    
+<div id="map" style="width: 100%; height: 100%;overflow: hidden;"></div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="assets/js/jquery-slim.min.js"><\/script>')</script>
+<script src="assets/js/popper.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<!-- Load Esri Leaflet Geocoder from CDN -->
+<script src="https://unpkg.com/esri-leaflet-geocoder@2.3.2/dist/esri-leaflet-geocoder.js"
+integrity="sha512-8twnXcrOGP3WfMvjB0jS5pNigFuIWj4ALwWEgxhZ+mxvjF5/FBPVd5uAxqT8dd2kUmTVK9+yQJ4CmTmSg/sXAQ=="
+crossorigin=""></script>
+<!-- <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script> -->
+<script src="assets/js/L.Control.Locate.min.js"></script>
+<script src="assets/js/leaflet.browser.print.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.js"></script>
+<script src="assets/js/L.Control.BetterScale.js"></script>
+<script type="text/javascript" src="assets/js/L.Control.ZoomBar.js"></script>
+<script src="assets/js/leaflet.groupedlayercontrol.js"></script>
+<script src="assets/js/L.Control.SlideMenu.js"></script>
+<script src="assets/js/leaflet-compass.js"></script>
+<script src="assets/js/Control.MiniMap.min.js"></script>
+<script src="assets/js/L.Control.MousePosition.js"></script>
+<script src="assets/js/leaflet.markercluster-src.js"></script>
+<script src="https://unpkg.com/urijs@^1/src/URI.min.js"></script>
+<script src="https://unpkg.com/load-js-css@0.0.2/index.js"></script>
+<script src="https://unpkg.com/manage-libs-versions@0.2.1/manage-libs-versions.js"></script>
+<!-- <script src="data/realworld.388.js"></script> -->
+<script src="data/surveybromo.js"></script>
+<script>
+
+  var map = new L.Map('map', {
+            zoomControl: false,
+            attribution: false
+        });
+        map.setView(new L.LatLng(-7.592,111.01140),16);
+        //map.setView(new L.LatLng(-7.588,111.001),15);
+
+  //Basemaps
+  var esristreets = L.esri.basemapLayer('Streets');
+  var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+  var osmAttrib='Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>';
+  var osm = new L.TileLayer(osmUrl, {minZoom: 0, maxZoom: 18, attribution: osmAttrib}).addTo(map);
+  var rbi = L.esri.dynamicMapLayer({ 
+            url: 'https://gis.bmkg.go.id/arcgis/rest/services/RBI_18/RBI_25_50_250_wms/MapServer', 
+            opacity: 100,
+            f: 'feature',
+            useCors: false
+            });
+
+  var markers = L.markerClusterGroup();
+  for (var i = 0; i < surveybromo.length; i++) {
+      var a = surveybromo[i];
+      var title = a[2];
+      var marker = L.marker(new L.LatLng(a[0], a[1]), {title: title});
+      marker.bindPopup(title);
+      markers.addLayer(marker);
+      }
+  map.addLayer(markers);
+
+  // var markers = L.markerClusterGroup();
+  // for (var i = 0; i < surveybromo.length; i++) {
+  //     var a = surveybromo[i];
+  //     var title = a[2];
+  //     var title1 = a[3];
+  //     var marker = L.marker(new L.LatLng(a[0], a[1]), {title: title}, { title1: title1});
+  //     marker.bindPopup(title + "<br>" + title1);
+  //     markers.addLayer(marker);
+  //     }
+  // map.addLayer(markers);
+
+  //Layer Group
+  var Basemaps = {
+    "Rupabumi Indonesia": rbi,
+    "Openstreet Map": osm,
+    "Streets": esristreets
+  };
+  var groupedOverlays = {
+    "Peta Tematik": {
+    "Kelompok 4": markers,
+  }
+  };
+  L.control.groupedLayers(Basemaps, groupedOverlays).addTo(map);
+
+  //Fullscreen
+  // map.addControl(new L.Control.Fullscreen({
+  //     title: {
+  //       'false': 'View Fullscreen',
+  //       'true': 'Exit Fullscreen'
+  //       }
+  // }));
+
+  //Home
+  var zoom_bar = new L.Control.ZoomBar({position: 'topleft'}).addTo(map);
+
+  // GPS
+  var lc = L.control.locate({
+      strings: {
+      title: "Lokasi Saya"
+      }
+  }).addTo(map);
+
+  //Print
+  L.control.browserPrint({
+  printModes: [
+  L.control.browserPrint.mode.landscape(),
+  L.control.browserPrint.mode.portrait()
+  ]}).addTo(map);
+  map.on("browser-print-start", function(e){
+  });
+
+  var comp = new L.Control.Compass({position: 'topright', autoActive: true, showDigit:true});
+  map.addControl(comp);
+
+  //Scale
+  L.control.betterscale({metric:true, imperial: false}).addTo(map);
+
+  L.control.mousePosition({position: 'bottomleft'}).addTo(map);
+
+  //Slide Menu
+  var left  = '<h1>Legenda</h1>';
+  var contents = '<hr>';
+  contents += '<h2>Read Me</h2>';
+  contents += '<p>A simple slide menu for Leaflet.<br>';
+  contents += 'When you click the menu button and the menu is displayed to slide.<br>';
+  contents += 'Please set the innerHTML to slide menu.</p>';
+  contents += '<h3>Usage</h3>';
+  contents += '<p>L.control.slideMenu("&lt;p&gt;test&lt;/p&gt;").addTo(map);</p>';
+  L.control.slideMenu(left + contents).addTo(map);
+  
+  var arcgisOnline = L.esri.Geocoding.arcgisOnlineProvider();
+
+  L.esri.Geocoding.geosearch({
+    providers: [
+      arcgisOnline,
+      L.esri.Geocoding.featureLayerProvider({
+        url: 'https://services.arcgis.com/uCXeTVveQzP4IIcx/arcgis/rest/services/gisday/FeatureServer/0/',
+        searchFields: ['Name', 'Organization'],
+        label: 'GIS Day Events',
+        bufferRadius: 5000,
+        formatSuggestion: function (feature) {
+          return feature.properties.Name + ' - ' + feature.properties.Organization;
+        }
+      })
+    ]
+  }).addTo(map);
+
+  //Plugin magic goes here! Note that you cannot use the same layer object again, as that will confuse the two map controls
+  var osm2 = new L.TileLayer(osmUrl, {minZoom: 2, maxZoom: 18, attribution: osmAttrib });
+  var miniMap = new L.Control.MiniMap(osm2, { position: 'bottomleft', toggleDisplay: true, minimized: true }).addTo(map);
+
+</script>
+
+</body>
+</html>
