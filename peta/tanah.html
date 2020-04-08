@@ -41,7 +41,6 @@
   <link rel="stylesheet" href="assets/css/leaflet.groupedlayercontrol.css"/>
   <link rel="stylesheet" href="assets/css/leaflet.css"/>
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/css/L.Control.SlideMenu.css">
   <link rel="stylesheet" href="assets/css/leaflet-compass.css">
   <link rel="stylesheet" href="assets/css/Control.MiniMap.min.css">
   <link rel="stylesheet" href="assets/css/L.Control.Locate.min.css">
@@ -97,14 +96,13 @@
 <script src="https://unpkg.com/esri-leaflet-geocoder@2.3.2/dist/esri-leaflet-geocoder.js"
 integrity="sha512-8twnXcrOGP3WfMvjB0jS5pNigFuIWj4ALwWEgxhZ+mxvjF5/FBPVd5uAxqT8dd2kUmTVK9+yQJ4CmTmSg/sXAQ=="
 crossorigin=""></script>
-<!-- <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script> -->
+<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
 <script src="assets/js/L.Control.Locate.min.js"></script>
 <script src="assets/js/leaflet.browser.print.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.js"></script>
 <script src="assets/js/L.Control.BetterScale.js"></script>
 <script type="text/javascript" src="assets/js/L.Control.ZoomBar.js"></script>
 <script src="assets/js/leaflet.groupedlayercontrol.js"></script>
-<script src="assets/js/L.Control.SlideMenu.js"></script>
 <script src="assets/js/leaflet-compass.js"></script>
 <script src="assets/js/Control.MiniMap.min.js"></script>
 <script src="assets/js/L.Control.MousePosition.js"></script>
@@ -790,12 +788,12 @@ crossorigin=""></script>
   L.control.groupedLayers(Basemaps, groupedOverlays).addTo(map);
 
   //Fullscreen
-  // map.addControl(new L.Control.Fullscreen({
-  //     title: {
-  //       'false': 'View Fullscreen',
-  //       'true': 'Exit Fullscreen'
-  //       }
-  // }));
+  map.addControl(new L.Control.Fullscreen({
+      title: {
+        'false': 'View Fullscreen',
+        'true': 'Exit Fullscreen'
+        }
+  }));
 
   //Home
   var zoom_bar = new L.Control.ZoomBar({position: 'topleft'}).addTo(map);
@@ -823,17 +821,6 @@ crossorigin=""></script>
   L.control.betterscale({metric:true, imperial: false}).addTo(map);
 
   L.control.mousePosition({position: 'bottomleft'}).addTo(map);
-
-  //Slide Menu
-  var left  = '<h2>Legenda</h2>';
-  var contents = '<hr>';
-  contents += '<h4>Status IDM</h4>';
-  contents += '<img src="assets/img/idm.png" alt="Smiley face" height="152" width="244">';
-  contents += '<p>';
-  contents += '<h4>Status IPD</h4>';
-  contents += '<img src="assets/img/ipd.png" alt="Smiley face" height="91" width="140">';
-
-  L.control.slideMenu(left + contents).addTo(map);
 
   var arcgisOnline = L.esri.Geocoding.arcgisOnlineProvider();
 

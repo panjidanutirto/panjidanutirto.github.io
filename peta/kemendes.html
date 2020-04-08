@@ -97,13 +97,14 @@
 <script src="https://unpkg.com/esri-leaflet-geocoder@2.3.2/dist/esri-leaflet-geocoder.js"
 integrity="sha512-8twnXcrOGP3WfMvjB0jS5pNigFuIWj4ALwWEgxhZ+mxvjF5/FBPVd5uAxqT8dd2kUmTVK9+yQJ4CmTmSg/sXAQ=="
 crossorigin=""></script>
-<!-- <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script> -->
+<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
 <script src="assets/js/L.Control.Locate.min.js"></script>
-<!-- <script src="assets/js/leaflet.browser.print.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.js"></script> -->
+<script src="assets/js/leaflet.browser.print.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.js"></script>
 <script src="assets/js/L.Control.BetterScale.js"></script>
 <script type="text/javascript" src="assets/js/L.Control.ZoomBar.js"></script>
 <script src="assets/js/leaflet.groupedlayercontrol.js"></script>
+<script src="assets/js/leaflet.browser.print.min.js"></script>
 <script src="assets/js/L.Control.SlideMenu.js"></script>
 <script src="assets/js/leaflet-compass.js"></script>
 <script src="assets/js/Control.MiniMap.min.js"></script>
@@ -235,24 +236,24 @@ crossorigin=""></script>
   L.control.groupedLayers(Basemaps, groupedOverlays).addTo(map);
 
   //Fullscreen
-  // map.addControl(new L.Control.Fullscreen({
-  //     title: {
-  //       'false': 'View Fullscreen',
-  //       'true': 'Exit Fullscreen'
-  //       }
-  // }));
+  map.addControl(new L.Control.Fullscreen({
+      title: {
+        'false': 'View Fullscreen',
+        'true': 'Exit Fullscreen'
+        }
+  }));
 
   //Home
   var zoom_bar = new L.Control.ZoomBar({position: 'topleft'}).addTo(map);
 
   //Print
-  // L.control.browserPrint({
-  // printModes: [
-  // L.control.browserPrint.mode.landscape(),
-  // L.control.browserPrint.mode.portrait()
-  // ]}).addTo(map);
-  // map.on("browser-print-start", function(e){
-  // });
+  L.control.browserPrint({
+  printModes: [
+  L.control.browserPrint.mode.landscape(),
+  L.control.browserPrint.mode.portrait()
+  ]}).addTo(map);
+  map.on("browser-print-start", function(e){
+  });
 
   var comp = new L.Control.Compass({position: 'topright', autoActive: true, showDigit:true});
   map.addControl(comp);
