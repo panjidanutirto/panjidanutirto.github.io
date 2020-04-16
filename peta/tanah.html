@@ -88,8 +88,6 @@
 <script src="assets/js/popper.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="assets/js/L.Control.Locate.min.js"></script>
-<script src="assets/js/leaflet.browser.print.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.js"></script>
 <script src="assets/js/L.Control.BetterScale.js"></script>
 <script type="text/javascript" src="assets/js/L.Control.ZoomBar.js"></script>
 <script src="assets/js/leaflet.groupedlayercontrol.js"></script>
@@ -780,15 +778,6 @@
 
   //Home
   var zoom_bar = new L.Control.ZoomBar({position: 'topleft'}).addTo(map);
-
-  //Print
-  L.control.browserPrint({
-  printModes: [
-  L.control.browserPrint.mode.landscape(),
-  L.control.browserPrint.mode.portrait()
-  ]}).addTo(map);
-  map.on("browser-print-start", function(e){
-  });
 
   // GPS
   var lc = L.control.locate({
