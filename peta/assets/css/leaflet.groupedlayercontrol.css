@@ -10,6 +10,6 @@
 
 .leaflet-control-layers-scrollbar {
   overflow-y: scroll;
-  max-height: 400px;
+  max-height: 300px;
   padding-right: 10px;
 }

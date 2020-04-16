@@ -38,21 +38,15 @@
   <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css"
     integrity="sha512-RLEjtaFGdC4iQMJDbMzim/dOvAu+8Qp9sw7QE4wIMYcg2goVoivzwgSZq9CsIxp4xKAZPKh5J2f2lOko2Ze6FQ=="
     crossorigin="">
-  <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"
-    integrity="sha512-MQlyPV+ol2lp4KodaU/Xmrn+txc1TP15pOBF/2Sfre7MRsA/pB4Vy58bEqe9u7a7DczMLtU5wT8n7OblJepKbg=="
-    crossorigin=""></script>
-  <script src="https://unpkg.com/esri-leaflet-cluster@2.0.1/dist/esri-leaflet-cluster.js"
-    integrity="sha512-2/Nwrks+A2omjKeWrF4TKFLIrUbAhSl8EDEm6xunuwXXYqMoJI71PZtlW0/vqt9d3DOyP1md/bzAnNH2KuAhaQ=="
-    crossorigin=""></script>
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <link rel="stylesheet" href="assets/css/L.Control.BetterScale.css">
   <link rel="stylesheet" type="text/css" href="assets/css/L.Control.ZoomBar.css"/>
-  <link rel="stylesheet" href="assets/css/leaflet.groupedlayercontrol.css"/>
   <link rel="stylesheet" href="assets/css/leaflet.css"/>
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/css/Control.MiniMap.min.css">
   <link rel="stylesheet" href="assets/css/L.Control.Locate.min.css">
   <link rel="stylesheet" href="assets/css/L.Control.MousePosition.css">
-  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" href="assets/css/leaflet.groupedlayercontrol.css"/>
   
   <style>
     body { margin:0; padding:0; }
@@ -61,7 +55,7 @@
 </head>
 <body>
   <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-      <a class="navbar-brand" href="kemendes.html">
+      <a class="navbar-brand" href="covid19.html">
           <img src="assets/img/covid.png" width="30" height="30" class="d-inline-block align-top" alt="">
           INACOVID19
         </a>
@@ -87,13 +81,18 @@
 <script>window.jQuery || document.write('<script src="assets/js/jquery-slim.min.js"><\/script>')</script>
 <script src="assets/js/popper.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"
+    integrity="sha512-MQlyPV+ol2lp4KodaU/Xmrn+txc1TP15pOBF/2Sfre7MRsA/pB4Vy58bEqe9u7a7DczMLtU5wT8n7OblJepKbg=="
+    crossorigin=""></script>
+<script src="https://unpkg.com/esri-leaflet-cluster@2.0.1/dist/esri-leaflet-cluster.js"
+    integrity="sha512-2/Nwrks+A2omjKeWrF4TKFLIrUbAhSl8EDEm6xunuwXXYqMoJI71PZtlW0/vqt9d3DOyP1md/bzAnNH2KuAhaQ=="
+    crossorigin=""></script>
 <script src="assets/js/L.Control.Locate.min.js"></script>
 <script src="assets/js/leaflet.browser.print.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.js"></script>
 <script src="assets/js/L.Control.BetterScale.js"></script>
 <script type="text/javascript" src="assets/js/L.Control.ZoomBar.js"></script>
 <script src="assets/js/leaflet.groupedlayercontrol.js"></script>
-<script src="assets/js/leaflet.browser.print.min.js"></script>
 <script src="assets/js/Control.MiniMap.min.js"></script>
 <script src="assets/js/L.Control.MousePosition.js"></script>
 <script>
@@ -135,61 +134,6 @@
                   "<b>Telepon :</b>&nbsp;" + layer.feature.properties.Telepon + "<br>" +
                   "<b>Keterangan :</b>&nbsp;" + layer.feature.properties.Keterangan;
         });
-        var Data_Covid_Jatim = L.esri.Cluster.featureLayer({
-            url: 'https://services8.arcgis.com/yTQgcgZWR10MGhD2/ArcGIS/rest/services/Data_Covid_Jatim/FeatureServer/0'
-        }).bindPopup(function (layer) {
-           return "<b>KAB/KOTA :</b>&nbsp;" + layer.feature.properties.KAB_KOTA + "<br>" +
-                  "<b>ODP :</b>&nbsp;" + layer.feature.properties.ODP + "<br>" +
-                  "<b>PDP :</b>&nbsp;" + layer.feature.properties.PDP + "<br>" +
-                  "<b>POSITIF :</b>&nbsp;" + layer.feature.properties.POSITIF + "<br>" +
-                  "<b>MENINGGAL :</b>&nbsp;" + layer.feature.properties.MENINGGAL + "<br>" +
-                  "<b>SEMBUH :</b>&nbsp;" + layer.feature.properties.SEMBUH + "<br>" +
-                  "<b>JUMLAH KASUS :</b>&nbsp;" + layer.feature.properties.JML_KASUS;
-        });
-        var Data_Covid_Kota_Malang = L.esri.Cluster.featureLayer({
-            url: 'https://services8.arcgis.com/yTQgcgZWR10MGhD2/ArcGIS/rest/services/Data_Covid_Kota_Malang/FeatureServer/0'
-        }).bindPopup(function (layer) {
-           return "<b>KECAMATAN :</b>&nbsp;" + layer.feature.properties.KECAMATAN + "<br>" +
-                  "<b>KELURAHAN :</b>&nbsp;" + layer.feature.properties.KELURAHAN + "<br>" +
-                  "<b>ODP :</b>&nbsp;" + layer.feature.properties.ODP + "<br>" +
-                  "<b>PDP :</b>&nbsp;" + layer.feature.properties.PDP + "<br>" +
-                  "<b>POSITIF :</b>&nbsp;" + layer.feature.properties.POSITIF + "<br>" +
-                  "<b>JUMLAH KASUS :</b>&nbsp;" + layer.feature.properties.JML_KASUS;
-        });
-        var covid19global = L.esri.Cluster.featureLayer({
-            url: 'https://services1.arcgis.com/0MSEUqKaxRlEPj5g/ArcGIS/rest/services/ncov_cases/FeatureServer/0'
-        }).bindPopup(function (layer) {
-           return "<b>Province_State :</b>&nbsp;" + layer.feature.properties.Province_State + "<br>" +
-                  "<b>Country_Region :</b>&nbsp;" + layer.feature.properties.Country_Region + "<br>" +
-                  "<b>Last_Update :</b>&nbsp;" + layer.feature.properties.Last_Update + "<br>" +
-                  "<b>Lat :</b>&nbsp;" + layer.feature.properties.Lat + "<br>" +
-                  "<b>Long_ :</b>&nbsp;" + layer.feature.properties.Long_ + "<br>" +
-                  "<b>Confirmed :</b>&nbsp;" + layer.feature.properties.Confirmed + "<br>" +
-                  "<b>Recovered :</b>&nbsp;" + layer.feature.properties.Recovered + "<br>" +
-                  "<b>Deaths :</b>&nbsp;" + layer.feature.properties.Deaths + "<br>" +
-                  "<b>Active :</b>&nbsp;" + layer.feature.properties.Active + "<br>" +
-                  "<b>Admin2 :</b>&nbsp;" + layer.feature.properties.Admin2 + "<br>" +
-                  "<b>FIPS :</b>&nbsp;" + layer.feature.properties.FIPS + "<br>" +
-                  "<b>Combined_Key :</b>&nbsp;" + layer.feature.properties.Combined_Key;
-        });
-        var covid19us = L.esri.Cluster.featureLayer({
-            url: 'https://services1.arcgis.com/0MSEUqKaxRlEPj5g/ArcGIS/rest/services/ncov_cases_US/FeatureServer/0'
-        }).bindPopup(function (layer) {
-           return "<b>Province_State :</b>&nbsp;" + layer.feature.properties.Province_State + "<br>" +
-                  "<b>Country_Region :</b>&nbsp;" + layer.feature.properties.Country_Region + "<br>" +
-                  "<b>Last_Update :</b>&nbsp;" + layer.feature.properties.Last_Update + "<br>" +
-                  "<b>Lat :</b>&nbsp;" + layer.feature.properties.Lat + "<br>" +
-                  "<b>Long_ :</b>&nbsp;" + layer.feature.properties.Long_ + "<br>" +
-                  "<b>Confirmed :</b>&nbsp;" + layer.feature.properties.Confirmed + "<br>" +
-                  "<b>Recovered :</b>&nbsp;" + layer.feature.properties.Recovered + "<br>" +
-                  "<b>Deaths :</b>&nbsp;" + layer.feature.properties.Deaths + "<br>" +
-                  "<b>Active :</b>&nbsp;" + layer.feature.properties.Active + "<br>" +
-                  "<b>Admin2 :</b>&nbsp;" + layer.feature.properties.Admin2 + "<br>" +
-                  "<b>FIPS :</b>&nbsp;" + layer.feature.properties.FIPS + "<br>" +
-                  "<b>Combined_Key :</b>&nbsp;" + layer.feature.properties.Combined_Key + "<br>" +
-                  "<b>Incident_Rate :</b>&nbsp;" + layer.feature.properties.Incident_Rate + "<br>" +
-                  "<b>People_Tested :</b>&nbsp;" + layer.feature.properties.People_Tested;
-        });
         var covid19esri = L.esri.Cluster.featureLayer({
             url: 'https://services1.arcgis.com/0MSEUqKaxRlEPj5g/ArcGIS/rest/services/Coronavirus_2019_nCoV_Cases/FeatureServer/0'
         }).bindPopup(function (layer) {
@@ -202,119 +146,12 @@
                   "<b>Recovered :</b>&nbsp;" + layer.feature.properties.Recovered + "<br>" +
                   "<b>Deaths :</b>&nbsp;" + layer.feature.properties.Deaths;
         });
-        var RS_51015km = L.esri.Cluster.featureLayer({
-            url: 'https://portal.ina-sdi.or.id/gis/rest/services/COVID19/Analisis_Jangkauan_RS_Covid19/MapServer/0'
-        }).bindPopup(function (layer) {
-           return "<b>FacilityID :</b>&nbsp;" + layer.feature.properties.FacilityID + "<br>" +
-                  "<b>Name :</b>&nbsp;" + layer.feature.properties.Name + "<br>" +
-                  "<b>FromBreak :</b>&nbsp;" + layer.feature.properties.FromBreak + "<br>" +
-                  "<b>ToBreak :</b>&nbsp;" + layer.feature.properties.ToBreak;
-        });
-        var Analisis_Risiko_Pandemi_COVID19_Jakarta12 = L.esri.dynamicMapLayer({ 
-            url: 'https://portal.ina-sdi.or.id/gis/rest/services/COVID19/Analisis_Risiko_Pandemi_COVID19_Jakarta/MapServer', 
-            layers: [12],
-            opacity: 100,
-            f: 'feature',
-            useCors: false
-        });
-        var Analisis_Risiko_Pandemi_COVID19_Jakarta1 = L.esri.dynamicMapLayer({ 
-            url: 'https://portal.ina-sdi.or.id/gis/rest/services/COVID19/Analisis_Risiko_Pandemi_COVID19_Jakarta/MapServer', 
-            layers: [1],
-            opacity: 100,
-            f: 'feature',
-            useCors: false
-        }).bindPopup(function (error, featureCollection) {
-          if (error || featureCollection.features.length === 5) {
-            return false;
-          } else {
-            return "<b>Nama_RS :</b>&nbsp;" + featureCollection.features[0].properties.Nama_RS + "<br>" +
-            "<b>Alamat :</b>&nbsp;" + featureCollection.features[0].properties.Alamat + "<br>" +
-            "<b>Telepon :</b>&nbsp;" + featureCollection.features[0].properties.Telepon + "<br>" +
-            "<b>Bed_VVIP :</b>&nbsp;" + featureCollection.features[0].properties.Bed_VVIP + "<br>" +
-            "<b>Bed_VIP :</b>&nbsp;" + featureCollection.features[0].properties.Bed_VIP + "<br>" +
-            "<b>Bed_Kls1 :</b>&nbsp;" + featureCollection.features[0].properties.Bed_Kls1 + "<br>" +
-            "<b>Bed_Kls2 :</b>&nbsp;" + featureCollection.features[0].properties.Bed_Kls2 + "<br>" +
-            "<b>Bed_Kls3 :</b>&nbsp;" + featureCollection.features[0].properties.Bed_Kls3 + "<br>" +
-            "<b>Bed_ICU :</b>&nbsp;" + featureCollection.features[0].properties.Bed_ICU + "<br>" +
-            "<b>Bed_PICU :</b>&nbsp;" + featureCollection.features[0].properties.Bed_PICU + "<br>" +
-            "<b>Bed_NICU :</b>&nbsp;" + featureCollection.features[0].properties.Bed_NICU + "<br>" +
-            "<b>Bed_HCU :</b>&nbsp;" + featureCollection.features[0].properties.Bed_HCU + "<br>" +
-            "<b>Bed_ICCU :</b>&nbsp;" + featureCollection.features[0].properties.Bed_ICCU + "<br>" +
-            "<b>Bed_IGD :</b>&nbsp;" + featureCollection.features[0].properties.Bed_IGD + "<br>" +
-            "<b>Bed_Bayi :</b>&nbsp;" + featureCollection.features[0].properties.Bed_Bayi + "<br>" +
-            "<b>Bed_Brsalin :</b>&nbsp;" + featureCollection.features[0].properties.Bed_Brsln + "<br>" +
-            "<b>Bed_Operasi :</b>&nbsp;" + featureCollection.features[0].properties.Bed_Oprs + "<br>" +
-            "<b>Bed_Isolas :</b>&nbsp;" + featureCollection.features[0].properties.Bed_Isolas + "<br>" +
-            "<b>Pos_COVID :</b>&nbsp;" + featureCollection.features[0].properties.Pos_COVID;
-          }
-        });
-        var Analisis_Risiko_Pandemi_COVID19_Jakarta2 = L.esri.dynamicMapLayer({ 
-            url: 'https://portal.ina-sdi.or.id/gis/rest/services/COVID19/Analisis_Risiko_Pandemi_COVID19_Jakarta/MapServer', 
-            layers: [2],
-            opacity: 100,
-            f: 'feature',
-            useCors: false
-        }).bindPopup(function (error, featureCollection) {
-          if (error || featureCollection.features.length === 5) {
-            return false;
-          } else {
-            return "<b>Pos_COVID :</b>&nbsp;" + featureCollection.features[0].properties.Pos_COVID + "<br>" +
-            "<b>PDP :</b>&nbsp;" + featureCollection.features[0].properties.PDP + "<br>" +
-            "<b>ODP :</b>&nbsp;" + featureCollection.features[0].properties.ODP + "<br>" +
-            "<b>Sembuh :</b>&nbsp;" + featureCollection.features[0].properties.Sembuh + "<br>" +
-            "<b>Meninggal :</b>&nbsp;" + featureCollection.features[0].properties.Meninggal + "<br>" +
-            "<b>Desa_Kel :</b>&nbsp;" + featureCollection.features[0].properties.Desa_Kel + "<br>" +
-            "<b>Kecamatan :</b>&nbsp;" + featureCollection.features[0].properties.Kecamatan + "<br>" +
-            "<b>Kotamadya :</b>&nbsp;" + featureCollection.features[0].properties.Kotamadya + "<br>" +
-            "<b>Provinsi :</b>&nbsp;" + featureCollection.features[0].properties.Provinsi + "<br>" +
-            "<b>Kls_Hzrd :</b>&nbsp;" + featureCollection.features[0].properties.Kls_Hzrd + "<br>" +
-            "<b>FID :</b>&nbsp;" + featureCollection.features[0].properties.FID + "<br>" +
-            "<b>Update :</b>&nbsp;" + featureCollection.features[0].properties.Update + "<br>" +
-            "<b>ORIG_FID :</b>&nbsp;" + featureCollection.features[0].properties.ORIG_FID;
-          }
-        });
-        var Analisis_Risiko_Pandemi_COVID19_Jakarta3 = L.esri.dynamicMapLayer({ 
-            url: 'https://portal.ina-sdi.or.id/gis/rest/services/COVID19/Analisis_Risiko_Pandemi_COVID19_Jakarta/MapServer', 
-            layers: [3],
-            opacity: 100,
-            f: 'feature',
-            useCors: false
-        });
-        var Analisis_Risiko_Pandemi_COVID19_Jakarta6 = L.esri.dynamicMapLayer({ 
-            url: 'https://portal.ina-sdi.or.id/gis/rest/services/COVID19/Analisis_Risiko_Pandemi_COVID19_Jakarta/MapServer', 
-            layers: [6],
-            opacity: 100,
-            f: 'feature',
-            useCors: false
-        });
-        var Analisis_Risiko_Pandemi_COVID19_Jakarta8 = L.esri.dynamicMapLayer({ 
-            url: 'https://portal.ina-sdi.or.id/gis/rest/services/COVID19/Analisis_Risiko_Pandemi_COVID19_Jakarta/MapServer', 
-            layers: [8],
-            opacity: 100,
-            f: 'feature',
-            useCors: false
-        });
-        var Analisis_Risiko_Pandemi_COVID19_Jakarta11 = L.esri.dynamicMapLayer({ 
-            url: 'https://portal.ina-sdi.or.id/gis/rest/services/COVID19/Analisis_Risiko_Pandemi_COVID19_Jakarta/MapServer', 
-            layers: [11],
-            opacity: 100,
-            f: 'feature',
-            useCors: false
-        });
         var RS_Rujukan = L.esri.Cluster.featureLayer({
             url: 'https://siaga.bnpb.go.id/arcgis/rest/services/COVID19/RS_Rujukan/MapServer/0'
         }).bindPopup(function (layer) {
            return "<b>Name :</b>&nbsp;" + layer.feature.properties.Name + "<br>" +
                   "<b>Keterangan :</b>&nbsp;" + layer.feature.properties.Keterangan + "<br>" +
                   "<b>Ket :</b>&nbsp;" + layer.feature.properties.Ket;
-        });
-        //https://gis.bnpb.go.id/server/rest/services/20200320_Jumlah_Status_COVID19/MapServer/0/query?where=1%3D1&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=*&returnGeometry=false&returnTrueCurves=false&maxAllowableOffset=&geometryPrecision=&outSR=&having=&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&historicMoment=&returnDistinctValues=false&resultOffset=&resultRecordCount=&queryByDistance=&returnExtentOnly=false&datumTransformation=&parameterValues=&rangeValues=&quantizationParameters=&featureEncoding=esriDefault&f=pjson
-        var data_suspect_23032020 = L.esri.dynamicMapLayer({
-            url: 'https://gis.bnpb.go.id/server/rest/services/20200320_Jumlah_Status_COVID19/MapServer',
-            layers: [0],
-            opacity: 100,
-            f: 'feature',
-            useCors: false
         });
 
         //Layer Group
@@ -325,30 +162,12 @@
         };
         var groupedOverlays = {
         "BNPB": {
-          "COVID19 per Provinsi" : COVID19_Indonesia_per_Provinsi,
-          "Data Suspect 23032020" : data_suspect_23032020,
+          "Kasus Covid-19 Indonesia" : COVID19_Indonesia_per_Provinsi,
           "RS Rujukan dan Lab" : RS_Rujukan,
-          "RS Rujukan COVID19 Indonesia" : RS_Rujukan_COVID19_Indonesia,
-        },
-        "JAKARTA": {
-          "Jangkauan dan Kapasitas RS Rujukan" : Analisis_Risiko_Pandemi_COVID19_Jakarta12,
-          "Jaringan Jalan" : Analisis_Risiko_Pandemi_COVID19_Jakarta11,
-          "Tingkat Kerentanan terhadap Penyebaran" : Analisis_Risiko_Pandemi_COVID19_Jakarta8,
-          "Tingkat Bahaya Penyebaran" : Analisis_Risiko_Pandemi_COVID19_Jakarta6,
-          "Tingkat Risiko Pandemi COVID-19" : Analisis_Risiko_Pandemi_COVID19_Jakarta3,
-          "Suspect Positif COVID-19" : Analisis_Risiko_Pandemi_COVID19_Jakarta2,
-          "RS Rujukan COVID-19" : Analisis_Risiko_Pandemi_COVID19_Jakarta1,
-        },
-        "UB": {
-          "Data Covid Jatim" : Data_Covid_Jatim,
-          "Data Covid Kota Malang" : Data_Covid_Kota_Malang,
-        },
-        "KAWALCOVID19": {
-          "Covid19 Global" : covid19global,
-          "Covid19 US" : covid19us,
+          "RS Rujukan" : RS_Rujukan_COVID19_Indonesia,
         },
         "ESRI": {
-          "Covid19 Global" : covid19esri,
+          "Kasus Covid-19 Global" : covid19esri,
         },
             };
         L.control.groupedLayers(Basemaps, groupedOverlays).addTo(map);
