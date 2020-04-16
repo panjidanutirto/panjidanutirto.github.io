@@ -44,18 +44,15 @@
   <script src="https://unpkg.com/esri-leaflet-cluster@2.0.1/dist/esri-leaflet-cluster.js"
     integrity="sha512-2/Nwrks+A2omjKeWrF4TKFLIrUbAhSl8EDEm6xunuwXXYqMoJI71PZtlW0/vqt9d3DOyP1md/bzAnNH2KuAhaQ=="
     crossorigin=""></script>
-  <link rel="stylesheet" href="assets/css/esri-leaflet-geocoder.css">
   <link rel="stylesheet" href="assets/css/L.Control.BetterScale.css">
   <link rel="stylesheet" type="text/css" href="assets/css/L.Control.ZoomBar.css"/>
   <link rel="stylesheet" href="assets/css/leaflet.groupedlayercontrol.css"/>
   <link rel="stylesheet" href="assets/css/leaflet.css"/>
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/css/leaflet-compass.css">
   <link rel="stylesheet" href="assets/css/Control.MiniMap.min.css">
   <link rel="stylesheet" href="assets/css/L.Control.Locate.min.css">
   <link rel="stylesheet" href="assets/css/L.Control.MousePosition.css">
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-  <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet'/>
   
   <style>
     body { margin:0; padding:0; }
@@ -77,17 +74,6 @@
           <li class="nav-item">
             <a class="nav-link" href="../index.html">Home</a>
           </li>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Link Penting</a>
-            <div class="dropdown-menu" aria-labelledby="dropdown01">
-              <a class="dropdown-item" href="https://www.kemendesa.go.id/" target="_blank">Kementerian Desa</a>
-              <a class="dropdown-item" href="https://gis-portal.kemendesa.go.id/portal/home/" target="_blank">Peta Desa</a>
-              <a class="dropdown-item" href="https://lumbungfile.kemendesa.go.id/index.php/s/eMoyCzfoc9LiAad" target="_blank">Hasil Dana Desa</a>
-              <a class="dropdown-item" href="http://idm.kemendesa.go.id/" target="_blank">Indeks Desa Membangun</a>
-              <a class="dropdown-item" href="https://www.bps.go.id/publication/2019/05/09/4edae4bd6c18d24b1b4273fe/indeks-pembangunan-desa-2018.html" target="_blank">Indeks Pembangunan Desa</a>
-            </div>
-          </li>
         </ul>
       </div>
     </nav>
@@ -101,18 +87,12 @@
 <script>window.jQuery || document.write('<script src="assets/js/jquery-slim.min.js"><\/script>')</script>
 <script src="assets/js/popper.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
-<!-- Load Esri Leaflet Geocoder from CDN -->
-<script src="https://unpkg.com/esri-leaflet-geocoder@2.3.2/dist/esri-leaflet-geocoder.js"
-integrity="sha512-8twnXcrOGP3WfMvjB0jS5pNigFuIWj4ALwWEgxhZ+mxvjF5/FBPVd5uAxqT8dd2kUmTVK9+yQJ4CmTmSg/sXAQ=="
-crossorigin=""></script>
-<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
 <script src="assets/js/L.Control.Locate.min.js"></script>
 <script src="assets/js/leaflet.browser.print.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.js"></script>
 <script src="assets/js/L.Control.BetterScale.js"></script>
 <script type="text/javascript" src="assets/js/L.Control.ZoomBar.js"></script>
 <script src="assets/js/leaflet.groupedlayercontrol.js"></script>
-<script src="assets/js/leaflet-compass.js"></script>
 <script src="assets/js/Control.MiniMap.min.js"></script>
 <script src="assets/js/L.Control.MousePosition.js"></script>
 
@@ -796,23 +776,8 @@ crossorigin=""></script>
   };
   L.control.groupedLayers(Basemaps, groupedOverlays).addTo(map);
 
-  //Fullscreen
-  map.addControl(new L.Control.Fullscreen({
-      title: {
-        'false': 'View Fullscreen',
-        'true': 'Exit Fullscreen'
-        }
-  }));
-
   //Home
   var zoom_bar = new L.Control.ZoomBar({position: 'topleft'}).addTo(map);
-
-  // GPS
-  var lc = L.control.locate({
-      strings: {
-      title: "Lokasi Saya"
-      }
-  }).addTo(map);
 
   //Print
   L.control.browserPrint({
@@ -823,30 +788,17 @@ crossorigin=""></script>
   map.on("browser-print-start", function(e){
   });
 
-  var comp = new L.Control.Compass({position: 'topright', autoActive: true, showDigit:true});
-  map.addControl(comp);
+  // GPS
+  var lc = L.control.locate({
+      strings: {
+      title: "Lokasi Saya"
+      }
+  }).addTo(map);
 
   //Scale
   L.control.betterscale({metric:true, imperial: false}).addTo(map);
 
   L.control.mousePosition({position: 'bottomleft'}).addTo(map);
-
-  var arcgisOnline = L.esri.Geocoding.arcgisOnlineProvider();
-
-  L.esri.Geocoding.geosearch({
-    providers: [
-      arcgisOnline,
-      L.esri.Geocoding.featureLayerProvider({
-        url: 'https://services.arcgis.com/uCXeTVveQzP4IIcx/arcgis/rest/services/gisday/FeatureServer/0/',
-        searchFields: ['Name', 'Organization'],
-        label: 'GIS Day Events',
-        bufferRadius: 5000,
-        formatSuggestion: function (feature) {
-          return feature.properties.Name + ' - ' + feature.properties.Organization;
-        }
-      })
-    ]
-  }).addTo(map);
 
   //Plugin magic goes here! Note that you cannot use the same layer object again, as that will confuse the two map controls
   var osm2 = new L.TileLayer(osmUrl, {minZoom: 2, maxZoom: 18, attribution: osmAttrib });
