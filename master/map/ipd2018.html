@@ -43,7 +43,6 @@
   <link rel="stylesheet" href="assets/css/L.Control.Locate.min.css">
   <link rel="stylesheet" href="assets/css/L.Control.MousePosition.css">
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-  <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet'/>
   
   <style>
     body { margin:0; padding:0; }
@@ -79,7 +78,6 @@
 	<script src="assets/js/L.Control.Locate.min.js"></script>
 	<script src="assets/js/L.Control.BetterScale.js"></script>
 	<script type="text/javascript" src="assets/js/L.Control.ZoomBar.js"></script>
-	<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
 	<script src="assets/js/L.Control.MousePosition.js"></script>
 	<script src="../../js/framework7.bundle.min.js"></script>
   <script src="../../js/routes.js"></script>
@@ -95,13 +93,6 @@
 
 	  //Basemaps
 	  var esristreets = L.esri.basemapLayer('Streets').addTo(map);
-
-	  map.addControl(new L.Control.Fullscreen({
-          title: {
-            'false': 'View Fullscreen',
-            'true': 'Exit Fullscreen'
-            }
-      }));
 
 	  var ipd2018 = L.esri.dynamicMapLayer({ 
             url: 'https://gis-portal.kemendesa.go.id/server/rest/services/Pusdatin/IPD_2018/MapServer', 
