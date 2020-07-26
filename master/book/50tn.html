@@ -1,0 +1,54 @@
+<html lang="en" class="no-js">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1.0">
+      <link rel="icon" href="../images/logo.png">
+      <title>50 Topik Ngobrol</title>
+      <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+      <style>
+      html body {width: 100%;height: 100%;padding: 0px;margin: 0px;overflow: hidden;font-family: arial;font-size: 10px;color: #6e6e6e;background-color: #000;} #preview-frame {width: 100%;background-color: #fff;}</style>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+      <script>
+         //function to fix height of iframe!
+         var calcHeight = function() {
+           //var headerDimensions = 0; //$('#header-bar').height();
+           $('#preview-frame').height($(window).height());
+         }
+         
+         $(document).ready(function() {
+           calcHeight();
+           /*$('#header-bar a.close').mouseover(function() {
+             $('#header-bar a.close').addClass('activated');
+           }).mouseout(function() {
+             $('#header-bar a.close').removeClass('activated');
+           });*/
+         }); 
+         
+         $(window).resize(function() {
+           calcHeight();
+         }).load(function() {
+           calcHeight();
+         });
+      </script>
+
+      <style>
+	    iframe { margin:0; padding:0; }
+	  </style>
+   </head>
+   <body>
+   	  <nav class="navbar navbar-light bg-light fixed-top">
+      	<a class="navbar-brand" href="../../book.html">
+          <img src="https://image.flaticon.com/icons/png/512/109/109618.png" width="20" height="20" class="d-inline-block align-top" alt="">
+        </a>
+      </nav>
+	  
+	  <iframe id="preview-frame" src="https://drive.google.com/file/d/1XmeKkIKg07B3dEuKBc6Q0CyqaxhhFnqH/preview" name="preview-frame" frameborder="0" noresize="noresize" style="height: 902px;padding-top: 50px">
+	  </iframe>
+
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script>window.jQuery || document.write('<script src="assets/js/jquery-slim.min.js"><\/script>')</script>
+      <script src="assets/js/popper.min.js"></script>
+      <script src="assets/js/bootstrap.min.js"></script>
+
+   </body>
+</html>

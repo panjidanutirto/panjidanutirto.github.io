@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="default">
+	<meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap:">
+
+	<link rel="icon" href="../images/logo.png">
+
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900&display=swap" rel="stylesheet">
+	<title>Indeks Pembangunan Desa 2014</title>
+	<link rel="stylesheet" href="../../css/framework7.bundle.min.css">
+  <link rel="stylesheet" href="../../css/ionicons.min.css">
+  <link rel="stylesheet" href="../../css/style.css">
+	<!-- Load Leaflet from CDN -->
+  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+  integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+  crossorigin=""></script>
+  <!-- Load Esri Leaflet from CDN -->
+  <script src="https://unpkg.com/esri-leaflet@2.3.3/dist/esri-leaflet.js"
+  integrity="sha512-cMQ5e58BDuu1pr9BQ/eGRn6HaR6Olh0ofcHFWe5XesdCITVuSBiBZZbhCijBe5ya238f/zMMRYIMIIg1jxv4sQ=="
+  crossorigin=""></script>
+  <!-- Load Leaflet MarkerCluster and Esri Leaflet Cluster from CDN -->
+  <link rel="stylesheet" type="text/css"
+    href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css"
+    integrity="sha512-BBToHPBStgMiw0lD4AtkRIZmdndhB6aQbXpX7omcrXeG2PauGBl2lzq2xUZTxaLxYz5IDHlmneCZ1IJ+P3kYtQ=="
+    crossorigin="">
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css"
+    integrity="sha512-RLEjtaFGdC4iQMJDbMzim/dOvAu+8Qp9sw7QE4wIMYcg2goVoivzwgSZq9CsIxp4xKAZPKh5J2f2lOko2Ze6FQ=="
+    crossorigin="">
+  <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"
+    integrity="sha512-MQlyPV+ol2lp4KodaU/Xmrn+txc1TP15pOBF/2Sfre7MRsA/pB4Vy58bEqe9u7a7DczMLtU5wT8n7OblJepKbg=="
+    crossorigin=""></script>
+  <script src="https://unpkg.com/esri-leaflet-cluster@2.0.1/dist/esri-leaflet-cluster.js"
+    integrity="sha512-2/Nwrks+A2omjKeWrF4TKFLIrUbAhSl8EDEm6xunuwXXYqMoJI71PZtlW0/vqt9d3DOyP1md/bzAnNH2KuAhaQ=="
+    crossorigin=""></script>
+  <link rel="stylesheet" href="assets/css/L.Control.BetterScale.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/L.Control.ZoomBar.css"/>
+  <link rel="stylesheet" href="assets/css/leaflet.css"/>
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/L.Control.Locate.min.css">
+  <link rel="stylesheet" href="assets/css/L.Control.MousePosition.css">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet'/>
+  
+  <style>
+    body { margin:0; padding:0; }
+    #map { position: absolute; top:0; bottom:0; right:0; left:0; }
+  </style>
+
+</head>
+<body>
+	
+	<div id="app">
+	  <div class="navbars"><div class="navbar navbar-page navbar-current">
+		<div class="navbar-inner sliding">
+			<div class="left" style="transform: translate3d(0px, 0px, 0px);">
+				<a href="../../index.html" class="link external">
+					<img src="https://image.flaticon.com/icons/png/512/109/109618.png" width="20" height="20" class="d-inline-block align-top" alt="">
+				</a>
+			</div>
+			<div class="title" style="left: -9px; transform: translate3d(0px, 0px, 0px);"></div>
+			<div class="right" style="transform: translate3d(0px, 0px, 0px);"></div>
+		</div>
+	  </div></div>
+	</div>
+
+	<div id="map" style="width: 100%; height: 100%;overflow: hidden;"></div>
+
+	<!-- Bootstrap core JavaScript
+	================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script>window.jQuery || document.write('<script src="assets/js/jquery-slim.min.js"><\/script>')</script>
+	<script src="assets/js/popper.min.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/L.Control.Locate.min.js"></script>
+	<script src="assets/js/L.Control.BetterScale.js"></script>
+	<script type="text/javascript" src="assets/js/L.Control.ZoomBar.js"></script>
+	<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
+	<script src="assets/js/L.Control.MousePosition.js"></script>
+	<script src="../../js/framework7.bundle.min.js"></script>
+  <script src="../../js/routes.js"></script>
+  <script src="../../js/app.js"></script>
+
+	<script>
+		var map = new L.Map('map', {
+            zoomControl: false,
+            attribution: false,
+            continuousWorld: true
+        });
+        map.setView(new L.LatLng(-7.01, 110.40), 10);
+
+	  //Basemaps
+	  var esristreets = L.esri.basemapLayer('Streets').addTo(map);
+
+	  map.addControl(new L.Control.Fullscreen({
+          title: {
+            'false': 'View Fullscreen',
+            'true': 'Exit Fullscreen'
+            }
+      }));
+
+	  var ipd2014 = L.esri.dynamicMapLayer({ 
+            url: 'https://gis-portal.kemendesa.go.id/server/rest/services/Pusdatin/IPD_2014/MapServer', 
+            layers: [3],
+            opacity: 100,
+            f: 'feature',
+            useCors: false
+        }).bindPopup(function (error, featureCollection) {
+          if (error || featureCollection.features.length === 5) {
+            return false;
+          } else {
+            return "<b>PROVINSI :</b>&nbsp;" + featureCollection.features[0].properties.PROVINSI + "<br>" +
+            "<b>KABKOT :</b>&nbsp;" + featureCollection.features[0].properties.KABKOT + "<br>" +
+            "<b>KECAMATAN :</b>&nbsp;" + featureCollection.features[0].properties.KECAMATAN + "<br>" +
+            "<b>DESA :</b>&nbsp;" + featureCollection.features[0].properties.DESA + "<br>" +
+            "<b>PELAYANAN DASAR :</b>&nbsp;" + featureCollection.features[0].properties.D_PLYNNDSR + "<br>" +
+            "<b>KONDISI INFRASTRUKTUR :</b>&nbsp;" + featureCollection.features[0].properties.D_INFRAS_I + "<br>" +
+            "<b>AKSESIBILITAS/ TRANSPORTASI :</b>&nbsp;" + featureCollection.features[0].properties.D_AKSES_TR + "<br>" +
+            "<b>PELAYANAN PUBLIK :</b>&nbsp;" + featureCollection.features[0].properties.D_PLYNUMM_ + "<br>" +
+            "<b>PENYELENGGARAAN PEMERINTAH :</b>&nbsp;" + featureCollection.features[0].properties.D_PYLGR_PM + "<br>" +
+            "<b>NILAI IPD :</b>&nbsp;" + featureCollection.features[0].properties.NILAIIPD20 + "<br>" +
+            "<b>STATUS IPD :</b>&nbsp;" + featureCollection.features[0].properties.STAT_IPD14;
+          }
+        }).addTo(map);
+	        
+	  //Home
+	  var zoom_bar = new L.Control.ZoomBar({position: 'topleft'}).addTo(map);
+
+	  //Scale
+	  L.control.betterscale({metric:true, imperial: false}).addTo(map);
+
+	  L.control.mousePosition({position: 'bottomleft'}).addTo(map);
+
+	  // GPS
+	  var lc = L.control.locate({
+	      strings: {
+	      title: "Lokasi Saya"
+	      }
+	  }).addTo(map);
+	</script>
+
+</body>
+</html>
