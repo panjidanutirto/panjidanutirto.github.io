@@ -6,8 +6,17 @@
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="default">
 	<meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap:">
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155363284-7"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-	<link rel="icon" href="../images/logo.png">
+        gtag('config', 'UA-155363284-7');
+      </script>
+
+	<link rel="icon" href="../../images/logo.png">
 
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900&display=swap" rel="stylesheet">
 	<title>Kawasan Bentang Alam Karst</title>
@@ -43,6 +52,7 @@
   <link rel="stylesheet" href="assets/css/L.Control.Locate.min.css">
   <link rel="stylesheet" href="assets/css/L.Control.MousePosition.css">
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="assets/css/legend.css"/>
   
   <style>
     body { margin:0; padding:0; }
@@ -78,6 +88,8 @@
 	<script src="assets/js/L.Control.Locate.min.js"></script>
 	<script src="assets/js/L.Control.BetterScale.js"></script>
 	<script type="text/javascript" src="assets/js/L.Control.ZoomBar.js"></script>
+	<script src="https://unpkg.com/esri-leaflet-renderers@2.0.4/dist/esri-leaflet-renderers-debug.js"></script>
+    <script src="https://milevski.co/esri-leaflet-legend/dist/esri-leaflet-legend-compat-src.js"></script>
 	<script src="assets/js/L.Control.MousePosition.js"></script>
 	<script src="../../js/framework7.bundle.min.js"></script>
 	<script src="../../js/routes.js"></script>
@@ -116,6 +128,8 @@
             "<b>SHAPE AREA :</b>&nbsp;" + featureCollection.features[0].properties.SHAPE_Area;
           }
         }).addTo(map);
+
+        L.esri.legendControl(karst).addTo(map);
 
 	  //Home
 	  var zoom_bar = new L.Control.ZoomBar({position: 'topleft'}).addTo(map);
