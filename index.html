@@ -1,312 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="default">
-	<meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap:">
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-155363284-7"></script>
-	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Panji Danutirto">
+    <meta name="description" content="Berisi data geospasial yang disusun dalam bentuk katalog dan aplikasi web GIS">
+    <title>Explore The Map - Home</title>
+    <link rel="icon" href="assets/logo.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <style>
+      body {
+        padding-top: 30px;
+      }
+    </style>
+  </head>
 
-	  gtag('config', 'UA-155363284-7');
-	</script>
+  <body>
 
-	<link rel="icon" href="images/logo.png">
+    <header>
+      <nav class="navbar navbar-light bg-light fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="#">
+            <img src="assets/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">&nbsp&nbsp
+            <strong>Explore The Map</strong>
+          </a>
+        </div>
+      </nav>
+    </header>
 
-	<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900&display=swap" rel="stylesheet">
-	<title>MyApps - Panji Danutirto</title>
-	<link rel="stylesheet" href="css/framework7.bundle.min.css">
-	<link rel="stylesheet" href="css/style.css">
+    <main role="main">
+      <div class="album py-5 bg-light">
+        <div class="container">
+    
+          <div class="row text-center">
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                  <div class="card-header">
+                    <b>Sebaran Covid-19 di Indonesia</b>
+                  </div>
+                <img class="card-img-top" src="assets/covid.png">
+                <div class="card-body">
+                  <div class="btn-group">
+                    <a class="btn btn-danger" href="#" role="button">Lihat Peta &raquo;</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                  <div class="card-header">
+                    <b>Peta IDM & IPD Kemendesa</b>
+                  </div>
+                <img class="card-img-top" src="assets/idm.png">
+                <div class="card-body">
+                  <div class="btn-group">
+                    <a class="btn btn-danger" href="#" role="button">Lihat Peta &raquo;</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                  <div class="card-header">
+                    <b>Sebaran POI Fasilitas Publik</b>
+                  </div>
+                <img class="card-img-top" src="assets/poi.png">
+                <div class="card-body">
+                  <div class="btn-group">
+                    <a class="btn btn-danger" href="#" role="button">Lihat Peta &raquo;</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+        </div>
+      </div>
 
-</head>
-<body>
-	
-	<div id="app">
+    </main>
 
-		<div class="view view-main view-init ios-edges" data-url="/">
-			<div class="page page-home page-with-subnavbar">
-
-				<div class="toolbar tabbar tabbar-labels toolbar-bottom">
-					<div class="toolbar-inner">
-						<a class="link external" href="index.html" class="tab-link tab-link-active">
-							<ion-icon name="map-sharp"></ion-icon>
-							<span>Peta</span>
-						</a>
-						<a class="link external" href="book.html" class="tab-link">
-							<ion-icon name="book-sharp"></ion-icon>
-							<span>Buku</span>
-						</a>
-						<a class="link external" href="video.html" class="tab-link">
-							<ion-icon name="videocam-sharp"></ion-icon>
-							<span>Movie</span>
-						</a>
-						<a class="link external" href="music.html" class="tab-link">
-							<ion-icon name="musical-notes-sharp"></ion-icon>
-							<span>Music</span>
-						</a>
-					</div>
-				</div>
-				
-				<div class="tabs">
-
-					<div id="tab-home" class="tab tab-home tab-active">
-
-						<!-- ========== TAB HOME ========== -->
-
-						<div class="header-title">
-							<div class="row">
-								<div class="col-70">
-									<div class="title-left">
-										<span class="title-name">Hi, I am Panji Danutirto</span>
-										<h2>Explore the Map</h2>
-									</div>
-								</div>
-								<div class="col-30">
-									<div class="profile-avatar">
-										<a href="/sign-in/">
-											<div class="image">
-												<span class="notification-point"></span>
-												<img src="images/profile.jpg" alt="">
-											</div>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="header-searchbar">
-							<form class="searchbar">
-								<div class="searchbar-inner">
-									<div class="searchbar-input-wrap">
-										<input type="search" placeholder="Telusuri peta">
-										<i class="searchbar-icon"></i>
-										<span class="input-clear-button"></span>
-									</div>
-									<span class="searchbar-disable-button">Cancel</span>
-								</div>
-							</form>
-						</div>
-
-						<!-- PETA -->
-						<div class="recommended-hotel">
-							<div class="block-title">
-								<h3>Negara Kesatuan Republik Indonesia</h3>
-								<span class="overline-title">Koleksi Basemap</span>
-							</div>
-							<div class="swiper-container swiper-container-offset swiper-init" data-space-between="10" data-slides-per-view="auto">
-								<div class="swiper-wrapper">
-									<div class="swiper-slide">
-										<img src="images/topografi-dem.png" alt="">
-										<div class="text">
-											<h4>
-												<a class="link external" href="master/map/topografi-dem.html">Topografi Indonesia DEM</a>
-											</h4>
-										</div>
-									</div>
-									<div class="swiper-slide">
-										<img src="images/rbi.png" alt="">
-										<div class="text">
-											<h4>
-												<a class="link external" href="master/map/rbi.html">Rupabumi Indonesia</a>
-											</h4>
-										</div>
-									</div>
-									<div class="swiper-slide">
-										<img src="images/rbi-hill.png" alt="">
-										<div class="text">
-											<h4>
-												<a class="link external" href="master/map/rbi-hillshade.html">Rupabumi Indonesia Hillshade</a>
-											</h4>
-										</div>
-									</div>
-									<div class="swiper-slide">
-										<img src="images/bathimetry.png" alt="">
-										<div class="text">
-											<h4>
-												<a class="link external" href="master/map/bathimetry.html">Bathimetry Indonesia</a>
-											</h4>
-										</div>
-									</div>
-									<div class="swiper-slide">
-										<img src="images/topografi.png" alt="">
-										<div class="text">
-											<h4>
-												<a class="link external" href="master/map/topografi.html">Topografi Indonesia</a>
-											</h4>
-										</div>
-									</div>
-									
-								</div>
-							</div>
-						</div>
-						<!-- END MAP -->
-
-						<!-- PETA -->
-						<div class="recommended-hotel">
-							<div class="block-title">
-								<h3>E-Atlas Indonesia</h3>
-								<span class="overline-title">Koleksi Peta</span>
-							</div>
-							<div class="swiper-container swiper-container-offset swiper-init" data-space-between="10" data-slides-per-view="auto">
-								<div class="swiper-wrapper">
-									<div class="swiper-slide">
-										<img src="images/kelautan.png" alt="">
-										<div class="text">
-											<h4>
-												<a class="link external" href="master/map/kelautan-indonesia.html">Kelautan Indonesia</a>
-											</h4>
-										</div>
-									</div>
-									
-								</div>
-							</div>
-						</div>
-						<!-- END MAP -->
-
-						<!-- PETA -->
-						<div class="recommended-hotel">
-							<div class="block-title">
-								<h3>Kementerian Lingkungan Hidup dan Kehutanan</h3>
-								<span class="overline-title">Koleksi Peta</span>
-							</div>
-							<div class="swiper-container swiper-container-offset swiper-init" data-space-between="10" data-slides-per-view="auto">
-								<div class="swiper-wrapper">
-									<div class="swiper-slide">
-										<img src="images/das.png" alt="">
-										<div class="text">
-											<h4>
-												<a class="link external" href="master/map/batas-das.html">Batas Daerah Aliran Sungai</a>
-											</h4>
-										</div>
-									</div>
-									<div class="swiper-slide">
-										<img src="images/pl.png" alt="">
-										<div class="text">
-											<h4>
-												<a class="link external" href="master/map/penutup-lahan.html">Penutup Lahan Tahun 2017</a>
-											</h4>
-										</div>
-									</div>
-									
-								</div>
-							</div>
-						</div>
-						<!-- END MAP -->
-
-						<!-- PETA -->
-						<div class="recommended-hotel">
-							<div class="block-title">
-								<h3>Kementerian Kesehatan</h3>
-								<span class="overline-title">Koleksi Peta</span>
-							</div>
-							<div class="swiper-container swiper-container-offset swiper-init" data-space-between="10" data-slides-per-view="auto">
-								<div class="swiper-wrapper">
-									<div class="swiper-slide">
-										<img src="images/puskesmas.png" alt="">
-										<div class="text">
-											<h4>
-												<a class="link external" href="master/map/faskes-puskesmas.html">Fasilitas Kesehatan Puskesmas</a>
-											</h4>
-										</div>
-									</div>
-									
-								</div>
-							</div>
-						</div>
-						<!-- END MAP -->
-
-						<!-- PETA -->
-						<div class="recommended-hotel">
-							<div class="block-title">
-								<h3>Kementerian Energi dan Sumber Daya Mineral</h3>
-								<span class="overline-title">Koleksi Peta</span>
-							</div>
-							<div class="swiper-container swiper-container-offset swiper-init" data-space-between="10" data-slides-per-view="auto">
-								<div class="swiper-wrapper">
-									<div class="swiper-slide">
-										<img src="images/geologi.png" alt="">
-										<div class="text">
-											<h4>
-												<a class="link external" href="master/map/geologi.html">Geologi Indonesia</a>
-											</h4>
-										</div>
-									</div>
-									<div class="swiper-slide">
-										<img src="images/karst.png" alt="">
-										<div class="text">
-											<h4>
-												<a class="link external" href="master/map/kawasan-bentang-alam-karst.html">Kawasan Bentang Alam Karst</a>
-											</h4>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- END MAP -->
-
-						<!-- PETA -->
-						<div class="recommended-hotel">
-							<div class="block-title">
-								<h3>Kementerian Desa, Pembangunan Daerah Tertinggal, dan Transmigrasi</h3>
-								<span class="overline-title">Koleksi Peta</span>
-							</div>
-							<div class="swiper-container swiper-container-offset swiper-init" data-space-between="10" data-slides-per-view="auto">
-								<div class="swiper-wrapper">
-									<div class="swiper-slide">
-										<img src="images/idm2018.jpg" alt="">
-										<div class="text">
-											<h4>
-												<a class="link external" href="master/map/idm2018.html">Indeks Desa Membangun 2018</a>
-											</h4>
-										</div>
-									</div>
-									<div class="swiper-slide">
-										<img src="images/idm2015.jpg" alt="">
-										<div class="text">
-											<h4>
-												<a class="link external" href="master/map/idm2015.html">Indeks Desa Membangun 2015</a>
-											</h4>
-										</div>
-									</div>
-									<div class="swiper-slide">
-										<img src="images/ipd2018.jpg" alt="">
-										<div class="text">
-											<h4>
-												<a class="link external" href="master/map/ipd2018.html">Indeks Pembangunan Desa 2018</a>
-											</h4>
-										</div>
-									</div>
-									<div class="swiper-slide">
-										<img src="images/ipd2014.jpg" alt="">
-										<div class="text">
-											<h4>
-												<a class="link external" href="master/map/ipd2014.html">Indeks Pembangunan Desa 2014</a>
-											</h4>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- END MAP -->
-
-
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- script -->
-	<script src="js/framework7.bundle.min.js"></script>
-	<script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
-	<script src="js/routes.js"></script>
-	<script src="js/app.js"></script>
-	<!-- end script -->
-
-</body>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+  
+  </body>
 </html>

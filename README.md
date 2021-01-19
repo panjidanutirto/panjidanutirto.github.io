@@ -1,1 +1,0 @@
-# panjidanutirto.github.io
